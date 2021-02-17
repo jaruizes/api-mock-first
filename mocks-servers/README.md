@@ -15,3 +15,8 @@ The main project is https://github.com/typicode/json-server
 ## Usage
 
 - dredd '<api-description-document>' '<api-location>'
+
+
+
+Probar:
+- Qué pasa si 

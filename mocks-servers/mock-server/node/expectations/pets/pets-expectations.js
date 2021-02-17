@@ -1,4 +1,4 @@
-const mockServerClient = require('mockserver-client').mockServerClient;
+const expectations = require('../../util/expectations')
 
 const petsExpectations = [];
 function petsData() {
@@ -82,25 +82,14 @@ const expectation_POST_Pet_Error = {
   }
 }
 
-const loadPetsExpectation = () => {
-  createExpectation(expectation_GET_AllPets);
-  createExpectation(expectation_GET_Pet_Error);
-  createExpectation(expectation_GET_Pet);
-  createExpectation(expectation_POST_Pet_Error);
-  createExpectation(expectation_POST_Pet);
-}
-
-function createExpectation(expectationData) {
-  mockServerClient("localhost", 1080).mockAnyResponse(expectationData).then(
-      function () {
-        console.log("expectation created");
-      },
-      function (error) {
-        console.log(error);
-      }
-  );
+const loadExpectations = () => {
+  expectations.createExpectation("expectation_GET_AllPets", expectation_GET_AllPets);
+  expectations.createExpectation("expectation_GET_Pet_Error", expectation_GET_Pet_Error);
+  expectations.createExpectation("expectation_GET_Pet", expectation_GET_Pet);
+  expectations.createExpectation("expectation_POST_Pet_Error", expectation_POST_Pet_Error);
+  expectations.createExpectation("expectation_POST_Pet", expectation_POST_Pet);
 }
 
 module.exports = {
-  loadPetsExpectation: loadPetsExpectation
+  loadExpectations: loadExpectations
 };
