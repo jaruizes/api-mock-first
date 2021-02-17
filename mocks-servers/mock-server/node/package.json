@@ -1,0 +1,16 @@
+{
+  "name": "mock-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start-mock-server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mockserver-client": "^5.11.2",
+    "mockserver-node": "^5.11.2"
+  },
+  "dependencies": {}
+}

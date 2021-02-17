@@ -1,0 +1,1 @@
+module.exports = ["pepe", "juan"]

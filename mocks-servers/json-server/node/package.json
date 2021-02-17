@@ -1,0 +1,15 @@
+{
+  "name": "json-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch mocks/index.js --config mocks/config.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "glob": "7.1.6",
+    "json-server": "0.16.3"
+  }
+}

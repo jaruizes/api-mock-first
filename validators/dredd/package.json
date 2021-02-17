@@ -1,0 +1,15 @@
+{
+  "name": "dredd-openapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "sh test.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dredd": "^14.0.0"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,25 @@
+{
+  "accounts":
+    {
+      "data": {
+        "accounts": [
+          {
+            "accountId": "1",
+            "displayName": "Cuenta de prueba",
+            "nickname": "Nickname de prueba",
+            "maskedNumber": "1234",
+            "openStatus": "OPEN",
+            "isOwned": true,
+            "productCategory": "TRANS_AND_SAVINGS_ACCOUNTS",
+            "productName": "MiCuenta"
+          }
+        ],
+        "links": {},
+        "meta": {}
+      }
+    },
+  "users": [
+    "pepe",
+    "juan"
+  ]
+}
