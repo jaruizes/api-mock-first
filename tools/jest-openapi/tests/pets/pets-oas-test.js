@@ -1,16 +1,18 @@
 const jestOpenAPI = require('jest-openapi');
 const path = require('path');
 const axios = require('axios');
+const mocksConfig = require('./mocks-config.json');
 
-const defFilesPath = path.resolve("./../..", "defs", "petstore");
-jestOpenAPI(path.resolve(defFilesPath, 'petstore.yaml'));
+const mockServer = mocksConfig.server;
+const apiDef = mocksConfig.apiDef;
+jestOpenAPI(path.resolve(apiDef));
 
 
 // Important: env NODE instead Browser (testEnvironment in jest-config or --env=node in package.json)
 
 describe('GET /pets', () => {
     it('should satisfy OpenAPI spec', async () => {
-        const res = await axios.get('http://localhost:3000/pets');
+        const res = await axios.get(`${mockServer}/pets`);
 
         expect(res.status).toEqual(200);
 
@@ -20,7 +22,7 @@ describe('GET /pets', () => {
 
 describe('GET /pets?limit=20', () => {
     it('should satisfy OpenAPI spec with "limit" query param', async () => {
-        const res = await axios.get('http://localhost:3000/pets?limit=20');
+        const res = await axios.get(`${mockServer}/pets?limit=20`);
 
         expect(res.status).toEqual(200);
 
@@ -30,7 +32,7 @@ describe('GET /pets?limit=20', () => {
 
 describe('GET /pets/{id}', () => {
     it('should satisfy OpenAPI spec', async () => {
-        const res = await axios.get('http://localhost:3000/pets/1');
+        const res = await axios.get(`${mockServer}/pets/1`);
 
         expect(res.status).toEqual(200);
 
@@ -41,7 +43,7 @@ describe('GET /pets/{id}', () => {
 describe('GET /pets/{id}', () => {
     it('should satisfy OpenAPI spec: error case', async () => {
         try {
-            await axios.get('http://localhost:3000/pets/10');
+            const res = await axios.get(`${mockServer}/pets/10`);
         } catch (error) {
             expect(error.response.status).toEqual(404);
             expect(error.response).toSatisfyApiSpec();
@@ -52,7 +54,7 @@ describe('GET /pets/{id}', () => {
 describe('POST /pets', () => {
     it('should satisfy OpenAPI spec', async () => {
         const pet = { name: 'good name'}
-        const res = await axios.post('http://localhost:3000/pets', pet);
+        const res = await axios.post(`${mockServer}/pets`, pet);
 
         expect(res.status).toEqual(201);
 
@@ -64,7 +66,7 @@ describe('POST /pets', () => {
     it('should satisfy OpenAPI spec: error case ', async () => {
         const pet = { name: 'wrong name'}
         try {
-            await axios.post('http://localhost:3000/pets', pet);
+            const res = await axios.post(`${mockServer}/pets`, pet);
         } catch (error) {
             expect(error.response.status).toEqual(500);
             expect(error.response).toSatisfyApiSpec();
