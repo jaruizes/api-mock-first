@@ -25,3 +25,14 @@ jobs:
         uses: ./.github/workflows/api-lint
         with:
           source: ./tools/openapi-validator
+
+  check-api-and-mocks:
+    name: Check API and Mocks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check API Definition
+        uses: ./.github/workflows/api-lint
+        with:
+          source-mock-server: ./mocks-servers/json-server/node
+          source: ./tools/jest-openapi

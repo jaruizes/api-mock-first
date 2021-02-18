@@ -1,0 +1,21 @@
+inputs:
+  source:
+    description: 'Source'
+runs:
+  using: "composite"
+  steps:
+    - name: Set Up Mock Server
+      run: npm install
+      shell: bash
+      working-directory: ${{ inputs.source-mock-server}}
+
+    - name: Set Up Tests
+      run: npm install
+      shell: bash
+      working-directory: ${{ inputs.source}}
+
+    # Build
+    - name: Check API and Mocks
+      run: npm run check-api-and-mocks
+      shell: bash
+      working-directory: ${{ inputs.source}}
