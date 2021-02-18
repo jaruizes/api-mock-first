@@ -4,7 +4,7 @@
   "description": "",
   "main": "tests/test-v1.js",
   "scripts": {
-    "mocks-server": "npm start --prefix ../../mocks-servers/mock-server/node &",
+    "mocks-server": "npm start --prefix ../../mocks-servers/json-server/node &",
     "test": "jest tests/**/*",
     "start": "npm run mocks-server && npm run test",
     "check-api-and-mocks": "start-server-and-test start http://localhost:3000"
