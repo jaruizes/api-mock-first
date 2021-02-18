@@ -1,6 +1,8 @@
 inputs:
   source:
     description: 'Source'
+  source-mock-server:
+    description: 'Source Mock Server'
 runs:
   using: "composite"
   steps:
