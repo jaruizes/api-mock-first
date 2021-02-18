@@ -8,7 +8,7 @@ module.exports = function(req, res, next) {
                     "message": "Server Error"
                 });
             } else {
-                next();
+                res.status(201).send();
             }
         } else if (req.method === 'GET') {
             if (req.path.startsWith('/pets/10')) {

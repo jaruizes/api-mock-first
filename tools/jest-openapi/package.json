@@ -4,13 +4,18 @@
   "description": "",
   "main": "tests/test-v1.js",
   "scripts": {
-    "test": "jest tests/**/*"
+    "mocks-server": "npm start --prefix ../../mocks-servers/json-server/node &",
+    "test": "jest tests/**/*",
+    "start": "npm run mocks-server && npm run test",
+    "check-api-and-mocks": "start-server-and-test start http://localhost:3000"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "axios": "^0.21.1",
+    "concurrently": "^5.3.0",
     "jest": "^26.6.3",
-    "jest-openapi": "^0.11.0"
+    "jest-openapi": "^0.11.0",
+    "start-server-and-test": "^1.11.5"
   }
 }
