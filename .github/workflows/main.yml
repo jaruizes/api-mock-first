@@ -17,6 +17,7 @@ jobs:
           fetch-depth: 2
 
   lint:
+    needs: checkout
     name: API Lint
     runs-on: ubuntu-latest
     steps:
@@ -27,12 +28,13 @@ jobs:
           source: ./tools/openapi-validator
 
   check-api-and-mocks:
+    needs: lint
     name: Check API and Mocks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Check API Definition
-        uses: ./.github/workflows/api-lint
+        uses: ./.github/workflows/check-api-and-mocks
         with:
           source-mock-server: ./mocks-servers/json-server/node
           source: ./tools/jest-openapi
